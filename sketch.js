@@ -17,11 +17,7 @@ function preload(){
   cloudImage = loadImage("cloud.png");
   
   obstacle1 = loadImage("obstacle1.png");
-  obstacle2 = loadImage("obstacle2.png");
-  obstacle3 = loadImage("obstacle3.png");
-  obstacle4 = loadImage("obstacle4.png");
-  obstacle5 = loadImage("obstacle5.png");
-  obstacle6 = loadImage("obstacle6.png");
+  //complete as proximas imagens
   
 }
 
@@ -41,16 +37,12 @@ function setup() {
   invisibleGround = createSprite(200,190,400,10);
   invisibleGround.visible = false;
   
-  var augusto = 123;
-  console.log("Hello "+ augusto );
-  
   
 }
 
 function draw() {
   background(180);
-  text("Score: "+ score, 500,50);
-  score = score + Math.round(frameCount/60);
+  //pontuação
   
   
   if(keyDown("space")&& trex.y >= 100) {
@@ -75,50 +67,21 @@ function draw() {
 }
 
 function gerarObstaculos(){
- if (frameCount % 60 === 0){
-   var obstacle = createSprite(400,165,10,40);
-   obstacle.velocityX = -6;
-
-   
-    // gerar obstáculos aleatórios
-    var rand = Math.round(random(1,6));
-    switch(rand) {
-      case 1: obstacle.addImage(obstacle1);
-              break;
-      case 2: obstacle.addImage(obstacle2);
-              break;
-      case 3: obstacle.addImage(obstacle3);
-              break;
-      case 4: obstacle.addImage(obstacle4);
-              break;
-      case 5: obstacle.addImage(obstacle5);
-              break;
-      case 6: obstacle.addImage(obstacle6);
-              break;
-      default: break;
-    }
-   
-    //atribuir dimensão e tempo de vida ao obstáculo           
-    obstacle.scale = 0.5;
-    obstacle.lifetime = 400/6;
- }
+ 
 }
 
-
-
-
 function gerarNuvens() {
-  //escreva o código aqui para gerar as nuvens
+  //gerar nuvens a cada 60 quadros
   if (frameCount % 60 === 0) {
     cloud = createSprite(600,100,40,10);
-    cloud.y = Math.round(random(10,60));
+    cloud.y = Math.round(random(10,100));
     cloud.addImage(cloudImage);
     cloud.scale = 0.5;
     cloud.velocityX = -3;
     
-     //atribua tempo de vida à variável
+    //atribua tempo de vida à variável
     //milisegundos
-    cloud.lifetime = 200
+   
     
     //ajuste a profundidade
     cloud.depth = trex.depth;
